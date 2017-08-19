@@ -21,9 +21,30 @@ Sync uses peer-to-peer technology to provide fast, private file sharing for team
 
 # Usage
 
+    docker-compose 
+    
+    Resilio:
+      image: oomathias/resilio-sync
+      privileged: true
+      restart: always
+      ports:
+      - 8888:8888
+      - 55555:55555
+      volumes:
+      - /mnt/sync:/mnt/sync
+      dns:
+      - 8.8.8.8
+      - 223.6.6.6
+      extra_hosts:
+      - "config.getsync.com:54.230.143.112"
+      - "config.resilio.com:54.230.143.112"
+      - "config.usyncapp.com:54.230.143.112"
+
+    docker 
+    
     DATA_FOLDER=/path/to/data/folder/on/the/host
     WEBUI_PORT=[ port to access the webui on the host ]
-
+    
     mkdir -p $DATA_FOLDER
 
     docker run -d --name Sync \
