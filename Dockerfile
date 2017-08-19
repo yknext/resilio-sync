@@ -61,6 +61,9 @@ RUN \
   && rm -rf /var/cache/apk/* \
   && rm -rf /tmp/*
 
+#add iptables
+RUN apk update && apk add iptables
+
 COPY entrypoint.sh /
 COPY sync.conf /etc/
 RUN chmod +x /entrypoint.sh
